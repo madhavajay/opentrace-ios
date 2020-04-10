@@ -166,14 +166,14 @@ class OTPViewController: UIViewController {
 
     @IBAction func verify(_ sender: UIButton) {
         verifyOTP { [unowned viewController = self] status in
-            switch status {
-            case .InvalidOTP:
-                viewController.errorMessageLabel?.text = NSLocalizedString("InvalidOTP", comment: "Must be a 6-digit code")
-                self.errorMessageLabel?.isHidden = false
-            case .WrongOTP:
-                viewController.errorMessageLabel?.text = NSLocalizedString("WrongOTP", comment: "Wrong OTP entered")
-                self.errorMessageLabel?.isHidden = false
-            case .Success:
+//            switch status {
+//            case .InvalidOTP:
+//                viewController.errorMessageLabel?.text = NSLocalizedString("InvalidOTP", comment: "Must be a 6-digit code")
+//                self.errorMessageLabel?.isHidden = false
+//            case .WrongOTP:
+//                viewController.errorMessageLabel?.text = NSLocalizedString("WrongOTP", comment: "Wrong OTP entered")
+//                self.errorMessageLabel?.isHidden = false
+//            case .Success:
                 if !UserDefaults.standard.bool(forKey: "hasConsented") {
                     viewController.performSegue(withIdentifier: "showConsentFromOTPSegue", sender: self)
                 } else if !UserDefaults.standard.bool(forKey: "allowedPermissions") {
@@ -183,7 +183,7 @@ class OTPViewController: UIViewController {
                 } else {
                     self.performSegue(withIdentifier: "OTPToHomeSegue", sender: self)
                 }
-            }
+//            }
         }
     }
 
